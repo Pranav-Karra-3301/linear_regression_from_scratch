@@ -1,4 +1,7 @@
 # Basic Linear Regression Using Numpy and Math
+![Static Badge](https://img.shields.io/badge/-numpy-teal?logo=numpy)
+![Static Badge](https://img.shields.io/badge/-Jupyter_Notebook-Orange?logo=jupyter)
+
 ## Basic Notations
 
 ### Hyperparameters
