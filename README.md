@@ -73,7 +73,7 @@ np.linspace(1.0, 10.0, 100) This is a function call to np.linspace(), which gene
 
 So, data_x is a two-dimensional NumPy array with 100 rows and 1 column, where the values in the first column range from 1.0 to 10.0, evenly spaced.
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/b2d0552a-437e-4bb3-8904-b3b588bb0ac2/75171250-f01a-4e24-a5ed-2eac6f95bb7f/Untitled.png)
+
 
 In order to simplify our model we use a trick which consists in including the intercept in the input values, this way we dont have to carry the bias (b) term through the calculation, that’s done by adding a column of ones to the data.
 
@@ -81,6 +81,7 @@ In order to simplify our model we use a trick which consists in including the in
 > 
 
 Our model becomes:
+
 $$
 y = w^Tx
 $$
