@@ -51,12 +51,8 @@ One of the methods we can use to minimuze Error is using Gradient Descent.
 
 We use gradients to update the model parameters (w and b in this case) until a minimum is found.
 
-![sgd.gif](https://prod-files-secure.s3.us-west-2.amazonaws.com/b2d0552a-437e-4bb3-8904-b3b588bb0ac2/20c13d71-fc13-4187-9f57-10e9475969f9/sgd.gif)
+![sgd.gif](https://doimages.nyc3.cdn.digitaloceanspaces.com/010AI-ML/content/images/2018/05/68747470733a2f2f707669676965722e6769746875622e696f2f6d656469612f696d672f70617274312f6772616469656e745f64657363656e742e676966.gif)
 
-June 1, 2024 
-
-> Figure out multivariable calculus
-> 
 
 ---
 
@@ -92,3 +88,96 @@ $$
 ```python
 data_x = np.hstack((np.ones_like(data_x), data_x))
 ```
+
+## Implementing Linear Regression
+
+Now that we have our data prepared, let's implement the linear regression algorithm using gradient descent.
+
+### Initializing Parameters
+
+We'll start by initializing our weight vector `w` randomly:
+
+```python
+w = np.random.randn(2, 1)
+```
+
+### Defining the Model
+
+Our linear regression model is simply the dot product of the input `x` and the weight vector `w`:
+
+```python
+def model(X, w):
+    return np.dot(X, w)
+```
+
+### Implementing the Loss Function
+
+We'll use Mean Squared Error (MSE) as our loss function:
+
+```python
+def mse_loss(y_true, y_pred):
+    return np.mean((y_true - y_pred) ** 2)
+```
+
+### Gradient Descent
+
+Now, let's implement the gradient descent algorithm:
+
+```python
+def gradient_descent(X, y, w, learning_rate, n_iterations):
+    m = len(y)
+    for _ in range(n_iterations):
+        y_pred = model(X, w)
+        gradient = (1/m) * np.dot(X.T, (y_pred - y))
+        w -= learning_rate * gradient
+    return w
+```
+
+### Training the Model
+
+Let's train our model using the gradient descent algorithm:
+
+```python
+learning_rate = 0.01
+n_iterations = 1000
+
+w_trained = gradient_descent(data_x, data_y, w, learning_rate, n_iterations)
+```
+
+### Making Predictions
+
+Now that we have trained our model, we can use it to make predictions:
+
+```python
+y_pred = model(data_x, w_trained)
+```
+
+### Evaluating the Model
+
+Let's calculate the Mean Squared Error to evaluate our model's performance:
+
+```python
+mse = mse_loss(data_y, y_pred)
+print(f"Mean Squared Error: {mse}")
+```
+
+## Visualizing the Results
+
+To better understand how well our model performs, let's visualize the results:
+
+```python
+import matplotlib.pyplot as plt
+
+plt.scatter(data_x[:, 1], data_y, color='b', label='Actual data')
+plt.plot(data_x[:, 1], y_pred, color='r', label='Predicted line')
+plt.legend()
+plt.xlabel('X')
+plt.ylabel('Y')
+plt.title('Linear Regression Results')
+plt.show()
+```
+
+This will create a scatter plot of the original data points and overlay the predicted line from our linear regression model.
+
+
+Remember that while this implementation is educational, for real-world applications, you might want to use more robust libraries like scikit-learn, which offer optimized implementations and additional features.
