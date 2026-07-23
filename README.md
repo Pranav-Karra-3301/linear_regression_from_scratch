@@ -2,6 +2,8 @@
 ![Static Badge](https://img.shields.io/badge/-numpy-teal?logo=numpy)
 ![Static Badge](https://img.shields.io/badge/-Jupyter_Notebook-orange?logo=jupyter&logoColor=white)
 
+An educational, from-scratch linear regression built with plain NumPy and gradient descent, no scikit-learn. It walks through the math (loss functions, mean squared error, gradient descent) and then implements the model, training loop, and result plots step by step in `main.ipynb`.
+
 ## Basic Notations
 
 ### Hyperparameters
@@ -181,3 +183,7 @@ This will create a scatter plot of the original data points and overlay the pred
 
 
 Remember that while this implementation is educational, for real-world applications, you might want to use more robust libraries like scikit-learn, which offer optimized implementations and additional features.
+
+---
+
+Built by [Pranav Karra](https://pranavkarra.me).
